@@ -29,7 +29,7 @@
             <label for="producto"><strong>Seleccione un producto:</strong></label>
             <select id="producto" name="producto_id" required>
                 {% for producto in productos %}
-                <option value="{{ producto.id }}">{{ producto.nombre }} (Ventas Totales: {{ producto.ventas_totales }})</option>
+                <option value="{{ producto.id }}">{{ producto.nombre }} </option>
                 {% endfor %}
             </select>
             <br><br>
