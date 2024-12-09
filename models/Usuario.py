@@ -1,5 +1,6 @@
 from utils.db import db
 from flask_login import UserMixin
+from werkzeug.security import check_password_hash, generate_password_hash
 
 class Usuario(UserMixin, db.Model):
     __tablename__ = 'usuarios'
@@ -24,4 +25,13 @@ class Usuario(UserMixin, db.Model):
         if usuario.usuario and usuario.password:
             return usuario
         return None
+    
+    def set_password(self, password):
+        """Crea un hash para la contraseña."""
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        """Verifica si la contraseña coincide con el hash almacenado."""
+        return check_password_hash(self.password, password)
+        
     
